@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  database:
+    image: mariadb
+    restart: always
+    container_name: sport_db
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sport
+    volumes:
+      - ./src/migration/initial_table.sql:/docker-entrypoint-initdb.d/initial_table.sql
+    ports:
+      - "3307:3306"
+  phpMyAdmin:
+    image: phpmyadmin
+    restart: always
+    container_name: sport_phpmyadmin
+    depends_on:
+      - database
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: database
