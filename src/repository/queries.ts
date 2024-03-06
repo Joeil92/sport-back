@@ -11,5 +11,7 @@ export default class UserQueries
         size,
         imageUrl,
         roles
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, JSON_ARRAY(?));`
+
+    public readonly findByEmail = `SELECT * FROM user WHERE email = ? LIMIT 1`;
 }

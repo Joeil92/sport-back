@@ -7,8 +7,8 @@ export default class User
         private firstname: string,
         private lastname: string,
         private phone: string,
-        private weigth: number,
-        private size: number,
+        private weigth: number | null,
+        private size: number | null,
         private imageUrl: string | null,
         private roles: string[]
     ) {}

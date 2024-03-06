@@ -11,7 +11,6 @@ export default class UserRepository
     public async add(user: User) {
         const connect = await pool.getConnection();
         const sql = this.queries.add;
-
         try {
             return await connect.query(sql, [
                 user.getEmail(),
@@ -24,6 +23,20 @@ export default class UserRepository
                 user.getImageUrl(),
                 user.getRoles()
             ])
+        } catch (error) {
+            console.log(error);
+            throw new Error('error to querying table : User');
+        } finally {
+            await connect.end();
+        }
+    }
+
+    public async findByEmail(email: string) {
+        const connect = await pool.getConnection();
+        const sql = this.queries.findByEmail;
+
+        try {
+            return await connect.query(sql, email);
         } catch (error) {
             console.log(error);
             throw new Error('error to querying table : User');
