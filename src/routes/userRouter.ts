@@ -1,7 +1,7 @@
 import express from "express";
 import UserController from "../controller/userController";
 
-export default class userRouter
+export default class UserRouter
 {
     constructor(
         private controller = new UserController()

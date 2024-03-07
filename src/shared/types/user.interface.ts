@@ -8,4 +8,5 @@ export interface UserBody {
     weigth?: number
     size?: number
     imageUrl?: string
+    roles?: string[]
 }

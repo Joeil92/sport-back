@@ -1,6 +1,7 @@
 import pool from "@Sport/config/database";
 import User from "@Sport/model/user";
 import UserQueries from "./queries";
+import { UserBody } from "../shared/types/user.interface";
 
 export default class UserRepository
 {
@@ -31,7 +32,7 @@ export default class UserRepository
         }
     }
 
-    public async findByEmail(email: string) {
+    public async findByEmail(email: string): Promise<UserBody[]> {
         const connect = await pool.getConnection();
         const sql = this.queries.findByEmail;
 
