@@ -45,4 +45,18 @@ export default class UserRepository
             await connect.end();
         }
     }
+
+    public async findAll(): Promise<User[]> {
+        const connect = await pool.getConnection();
+        const sql = this.queries.findAll;
+
+        try {
+            return await connect.query(sql);
+        } catch (error) {
+            console.log(error);
+            throw new Error('error to querying table : User');
+        } finally {
+            await connect.end();
+        }
+    }
 }

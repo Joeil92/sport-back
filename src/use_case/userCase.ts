@@ -50,4 +50,8 @@ export default class UserCase {
                     });
             });
     }
+
+    public async findAll() {
+        return await this.repository.findAll();
+    }
 }

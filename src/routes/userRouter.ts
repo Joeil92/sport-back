@@ -14,7 +14,7 @@ export default class UserRouter
 
         router.route('/').post(controller.add);
 
-        router.route('/').get(authMiddleware, controller.find);
+        router.route('/').get(authMiddleware, controller.findAll);
 
         return router;
     }

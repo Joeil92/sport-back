@@ -18,7 +18,9 @@ export default class UserController
             .catch(err => next(err));
     }
 
-    public find = (req: Request, res: Response, next: NextFunction) => {
-        res.json('ok');
+    public findAll = async (req: Request, res: Response, next: NextFunction) => {
+        return await this.useCase.findAll()
+            .then(users => res.json(users))
+            .catch(err => next(err));
     }
 }
