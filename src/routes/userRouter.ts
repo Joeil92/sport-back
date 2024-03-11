@@ -1,5 +1,6 @@
 import express from "express";
 import UserController from "../controller/userController";
+import authMiddleware from "../middleware/authMiddleware";
 
 export default class UserRouter
 {
@@ -13,7 +14,7 @@ export default class UserRouter
 
         router.route('/').post(controller.add);
 
-        router.route('/').get(controller.find);
+        router.route('/').get(authMiddleware, controller.find);
 
         return router;
     }

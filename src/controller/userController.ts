@@ -19,6 +19,6 @@ export default class UserController
     }
 
     public find = (req: Request, res: Response, next: NextFunction) => {
-
+        res.json('ok');
     }
 }
