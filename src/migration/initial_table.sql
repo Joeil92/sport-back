@@ -11,3 +11,14 @@ CREATE TABLE user (
     roles JSON,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE workout (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    time TIME NOT NULL,
+    user_id INT(11) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_workout_user 
+        FOREIGN KEY (user_id) REFERENCES user (id) 
+        ON DELETE CASCADE
+);

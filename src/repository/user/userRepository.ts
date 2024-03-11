@@ -1,7 +1,7 @@
 import pool from "@Sport/config/database";
 import User from "@Sport/model/user";
 import UserQueries from "./queries";
-import { UserBody } from "../shared/types/user.interface";
+import { UserBody } from "../../shared/types/user.interface";
 
 export default class UserRepository
 {

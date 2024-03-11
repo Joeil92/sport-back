@@ -1,5 +1,5 @@
 import User from "../model/user";
-import UserRepository from "../repository/userRepository";
+import UserRepository from "../repository/user/userRepository";
 import AuthService from "../services/authService";
 import { UserBody } from "../shared/types/user.interface";
 
