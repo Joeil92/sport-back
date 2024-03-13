@@ -2,11 +2,10 @@ import express from "express";
 import UserController from "../controller/userController";
 import authMiddleware from "../middleware/authMiddleware";
 
-export default class UserRouter
-{
+export default class UserRouter {
     constructor(
         private controller = new UserController()
-    ) {}
+    ) { }
 
     public routes() {
         const router = express.Router();

@@ -1,4 +1,5 @@
 import express from 'express';
+import { AddressInfo } from 'net'
 import http from 'http';
 import dotenv from 'dotenv'; 
 import expressConfig from './config/express';
@@ -20,5 +21,7 @@ routes(app);
 app.use(errorHandlingMiddleware);
 
 server.listen(process.env.PORT, () => {
-    console.log(`SERVER RUNNING ON PORT ${process.env.PORT}`);
+    const host = server.address() as AddressInfo;
+
+    console.log('SERVER RUNNING ON http://%s:%s', host.address, host.port);
 })
