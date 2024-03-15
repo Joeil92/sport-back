@@ -18,6 +18,14 @@ export default class UserController
             .catch(err => next(err));
     }
 
+    public findById = async (req: Request, res: Response, next: NextFunction) => {
+        const userId = req.params.id;
+
+        return await this.useCase.findById(userId)
+            .then(user => res.json(user))
+            .catch(err => next(err));
+    };
+
     public findAll = async (req: Request, res: Response, next: NextFunction) => {
         return await this.useCase.findAll()
             .then(users => res.json(users))

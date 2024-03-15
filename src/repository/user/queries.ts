@@ -15,6 +15,19 @@ export default class UserQueries
 
     public readonly findByEmail = `SELECT * FROM user WHERE email = ? LIMIT 1`;
 
+    public readonly findById = `SELECT
+    id,
+    email,
+    firstname,
+    lastname,
+    phone,
+    weigth,
+    size,
+    imageUrl,
+    roles
+    FROM user
+    WHERE id = ?`;
+
     public readonly findAll = `SELECT
     id,
     email,

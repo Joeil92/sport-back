@@ -15,17 +15,23 @@ export default class UserRouter {
          * @swagger
          * /users:
          *   post:
-         *     summary: Retrieve a list of JSONPlaceholder users
-         *     description: Retrieve a list of users from JSONPlaceholder. Can be used to populate a list of fake users when prototyping or testing an API.
+         *     summary: Add new user
         */
         router.route('/').post(controller.add);
 
         /**
          * @swagger
+         * /users/:id:
+         *   get:
+         *     summary: Retrieve user
+         */
+        router.route('/:id').get(controller.findById);
+
+        /**
+         * @swagger
          * /users:
          *   get:
-         *     summary: Retrieve a list of JSONPlaceholder users
-         *     description: Retrieve a list of users from JSONPlaceholder. Can be used to populate a list of fake users when prototyping or testing an API.
+         *     summary: Retrieve a list of users
         */
         router.route('/').get(authMiddleware, controller.findAll);
 

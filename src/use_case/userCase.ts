@@ -51,6 +51,15 @@ export default class UserCase {
             });
     }
 
+    public async findById(userId: string) {
+        return await this.repository.findById(userId)
+            .then(users => {
+                if(!users.length) throw new Error('User not found');
+
+                return users[0];
+            })
+    }
+
     public async findAll() {
         return await this.repository.findAll();
     }
