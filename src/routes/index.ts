@@ -11,5 +11,5 @@ export default function routes(app: Express) {
     app.use('/api/workouts', new WorkoutRouter().routes());
 
     // Documentation
-    app.use('/api-docs', swaggerUi.serve, new ApiDoc().routes());
+    app.use('/docs', swaggerUi.serve, new ApiDoc().routes());
 }

@@ -6,10 +6,16 @@ const options: Options = {
         info: {
             title: 'FitTrackr',
             version: '1.0.0',
-            description: "A sample API for FitTrackr app"
-        }
+            description: "REST API app made with Express."
+        },
+        servers: [
+            {
+                url: 'http://localhost:8000',
+                description: 'Development server',
+            },
+        ]
     },
-    apis: ['../routes/index*.ts']
+    apis: ['./src/routes/*.ts']
 };
 
 const openapiSpecification = swaggerJsdoc(options);
