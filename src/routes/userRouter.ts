@@ -57,11 +57,17 @@ export default class UserRouter {
 
         /**
          * @swagger
-         * /api/users/:id:
+         * /api/users/{id}:
          *   get:
          *     tags:
          *      - User
-         *     summary: Retrieve user
+         *     summary: Retrieve user by ID
+         *     parameters:
+         *      - name: id
+         *        in: path
+         *        required: true
+         *        schema: 
+         *          type: string
          *     responses:
          *      200:
          *          description: Retrieve user  
