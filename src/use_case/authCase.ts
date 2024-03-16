@@ -23,6 +23,7 @@ export default class AuthCase
                 }
 
                 const payload = {
+                    id: users[0].id,
                     email: users[0].email,
                     roles: users[0].roles
                 };
