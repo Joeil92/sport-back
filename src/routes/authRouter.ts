@@ -25,15 +25,22 @@ export default class AuthRouter {
          *    produces:
          *      - application/json
          *    summary: Generate authentication token
-         *    parameters:
-         *      - name: email
-         *        in: body
-         *        required: true
-         *        type: string
-         *      - name: password
-         *        in: body
-         *        required: true
-         *        type: string
+         *    requestBody:
+         *      required: true
+         *      content:
+         *        application/json:
+         *          schema:
+         *            type: object
+         *            properties:
+         *              email:
+         *                type: string
+         *              password:
+         *                type: string
+         *    responses:
+         *      200:
+         *          description: Auth token
+         *      400:
+         *          description: Bad request
          */
         router.route('/').post(controller.auth);
 

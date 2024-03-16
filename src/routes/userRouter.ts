@@ -19,66 +19,65 @@ export default class UserRouter {
 
         /**
          * @swagger
-         * /users:
+         * /api/users:
          *   post:
          *     tags:
          *      - User
          *     produces:
          *      - application/json
          *     summary: Add new user
-         *     parameters:
-         *        - name: email
-         *          in: body
+         *     requestBody:
          *          required: true
-         *          type: string
-         *        - name: password
-         *          in: body
-         *          required: true
-         *          type: string   
-         *        - name: firstname
-         *          in: body
-         *          required: true
-         *          type: string
-         *        - name: lastname
-         *          in: body
-         *          required: true
-         *          type: string
-         *        - name: phone
-         *          in: body
-         *          required: true
-         *          type: string 
-         *        - name: weigth
-         *          in: body
-         *          type: number 
-         *        - name: size
-         *          in: body
-         *          type: number 
-         *        - name: imageUrl
-         *          in: body
-         *          type: string
-         *        - name: roles
-         *          in: body
-         *          type: string[]
+         *          content:
+         *              application/json:
+         *                  schema:
+         *                      type: object
+         *                      properties:
+         *                          email:
+         *                              type: string
+         *                          pasword:
+         *                              type: string
+         *                          firstname:
+         *                              type: string
+         *                          lastname:
+         *                              type: string
+         *                          phone:
+         *                              type: string 
+         *                          weigth:
+         *                              type: string
+         *                          size:
+         *                              type: string
+         *                          imageUrl:
+         *                              type: string
+         *     responses:
+         *      200:
+         *          description: new User added
         */
         router.route('/').post(controller.add);
 
         /**
          * @swagger
-         * /users/:id:
+         * /api/users/:id:
          *   get:
          *     tags:
          *      - User
          *     summary: Retrieve user
+         *     responses:
+         *      200:
+         *          description: Retrieve user  
          */
         router.route('/:id').get(controller.findById);
 
         /**
          * @swagger
-         * /users:
+         * /api/users:
          *   get:
          *     tags:
          *      - User
          *     summary: Retrieve a list of users
+         *     responses:
+         *      200:
+         *          description: Retrieve list of users
         */
         router.route('/').get(authMiddleware, controller.findAll);
 

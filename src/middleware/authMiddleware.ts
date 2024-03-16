@@ -3,7 +3,7 @@ import AuthService from "../services/authService";
 
 export default function authMiddleware(req: Request, res: Response, next: NextFunction) {
     const authService = new AuthService();
-    const token = req.header('Autorization');
+    const token = req.header('Authorization');
 
     if(!token) throw new Error('Token not found. Please try to connect.');
 
