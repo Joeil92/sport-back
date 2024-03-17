@@ -12,29 +12,38 @@
     "strict": true, /* Enable all strict type-checking options. */
     "skipLibCheck": true, /* Skip type checking all .d.ts files. */
     "paths": {
-      "@Sport/src/*": [
+      "@FitTrackr/src/*": [
         "./src/*"
       ],
-      "@Sport/config/*": [
+      "@FitTrackr/config/*": [
         "./src/config/*"
       ],
-      "@Sport/routes/*": [
+      "@FitTrackr/routes/*": [
         "./src/routes/*"
       ],
-      "@Sport/controllers/*": [
+      "@FitTrackr/controllers/*": [
         "./src/controllers/*"
       ],
-      "@Sport/models/*": [
+      "@FitTrackr/models/*": [
         "./src/models/*"
       ],
-      "@Sport/middlewares/*": [
+      "@FitTrackr/middlewares/*": [
         "./src/middlewares/*"
       ],
-      "@Sport/use_cases/*": [
+      "@FitTrackr/repositories/*": [
+        "./src/repositories/*"
+      ],
+      "@FitTrackr/use_cases/*": [
         "./src/use_cases/*"
       ],
-      "@Sport/types/*": [
-        "./src/types/*"
+      "@FitTrackr/services/*": [
+        "./src/services/*"
+      ],      
+      "@FitTrackr/fixtures/*": [
+        "./src/fixtures/*"
+      ],      
+      "@FitTrackr/types/*": [
+        "./src/shared/types/*"
       ]
     }, /* Specify a set of entries that re-map imports to additional lookup locations. */
   }

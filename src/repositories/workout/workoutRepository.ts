@@ -1,6 +1,6 @@
-import Workout from "@Sport/src/models/workout";
+import Workout from "@FitTrackr/src/models/workout";
 import WorkoutQueries from "./queries";
-import pool from "@Sport/src/config/database";
+import pool from "@FitTrackr/src/config/database";
 
 export default class WorkoutRepository
 {

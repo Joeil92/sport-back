@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import WorkoutCase from "../use_cases/workoutCase";
-import { WorkoutBody } from "../shared/types/workout.interface";
+import WorkoutCase from "@FitTrackr/use_cases/workoutCase";
+import { WorkoutBody } from "@FitTrackr/types/workout.interface";
 
 export default class WorkoutController
 {

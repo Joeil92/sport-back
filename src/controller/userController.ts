@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import UserCase from "../use_cases/userCase";
+import UserCase from "@FitTrackr/use_cases/userCase";
 
 export default class UserController
 {

@@ -1,5 +1,5 @@
-import pool from "@Sport/config/database";
-import User from "@Sport/models/user";
+import pool from "@FitTrackr/config/database";
+import User from "@FitTrackr/models/user";
 import UserQueries from "./queries";
 import { UserBody } from "../../shared/types/user.interface";
 

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import AuthCase from "../use_cases/authCase";
-import { Credentials } from "../shared/types/credentials.interface";
+import AuthCase from "@FitTrackr/use_cases/authCase";
+import { Credentials } from "@FitTrackr/types/credentials.interface";
 
 export default class AuthController
 {

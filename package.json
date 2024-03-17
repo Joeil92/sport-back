@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
+    "fixtures": "ts-node src/fixtures/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
