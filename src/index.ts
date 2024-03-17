@@ -3,7 +3,7 @@ import { AddressInfo } from 'net'
 import http from 'http';
 import dotenv from 'dotenv'; 
 import expressConfig from './config/express';
-import errorHandlingMiddleware from './middleware/errorHandlingMiddleware';
+import errorHandlingMiddleware from './middlewares/errorHandlingMiddleware';
 import routes from './routes';
 
 // Config

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import WorkoutCase from "../use_case/workoutCase";
+import WorkoutCase from "../use_cases/workoutCase";
 import { WorkoutBody } from "../shared/types/workout.interface";
 
 export default class WorkoutController

@@ -1,5 +1,5 @@
-import Workout from "../model/workout";
-import WorkoutRepository from "../repository/workout/workoutRepository";
+import Workout from "../models/workout";
+import WorkoutRepository from "../repositories/workout/workoutRepository";
 import { WorkoutBody } from "../shared/types/workout.interface";
 
 export default class WorkoutCase

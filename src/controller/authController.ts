@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import AuthCase from "../use_case/authCase";
+import AuthCase from "../use_cases/authCase";
 import { Credentials } from "../shared/types/credentials.interface";
 
 export default class AuthController

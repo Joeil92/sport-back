@@ -1,6 +1,6 @@
 import express from "express";
 import UserController from "../controller/userController";
-import authMiddleware from "../middleware/authMiddleware";
+import authMiddleware from "../middlewares/authMiddleware";
 
 export default class UserRouter {
     constructor(

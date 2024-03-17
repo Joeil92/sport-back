@@ -24,8 +24,8 @@
       "@Sport/controllers/*": [
         "./src/controllers/*"
       ],
-      "@Sport/model/*": [
-        "./src/model/*"
+      "@Sport/models/*": [
+        "./src/models/*"
       ],
       "@Sport/middlewares/*": [
         "./src/middlewares/*"

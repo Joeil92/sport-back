@@ -1,4 +1,4 @@
-import UserRepository from "../repository/user/userRepository";
+import UserRepository from "../repositories/user/userRepository";
 import AuthService from "../services/authService";
 import { Credentials } from "../shared/types/credentials.interface";
 

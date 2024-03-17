@@ -1,4 +1,4 @@
-import Workout from "@Sport/src/model/workout";
+import Workout from "@Sport/src/models/workout";
 import WorkoutQueries from "./queries";
 import pool from "@Sport/src/config/database";
 

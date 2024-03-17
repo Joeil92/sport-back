@@ -1,5 +1,5 @@
 import express from "express";
-import authMiddleware from "../middleware/authMiddleware";
+import authMiddleware from "../middlewares/authMiddleware";
 import WorkoutController from "../controller/workoutController";
 
 export default class WorkoutRouter
