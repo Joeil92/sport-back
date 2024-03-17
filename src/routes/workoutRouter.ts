@@ -8,11 +8,17 @@ export default class WorkoutRouter
         private controller = new WorkoutController()
     ) {}
 
+    /**
+     * @swagger
+     * tags:
+     *  - name: Workout
+     *    description: APIs related to workout model
+     */
     public routes() {
         const router = express.Router();
         const controller = this.controller;
 
-        router.route('/').post(controller.add);
+        router.route('/').post(authMiddleware, controller.add);
 
         return router;
     }
