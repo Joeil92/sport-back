@@ -3,7 +3,6 @@ export default class Workout
     constructor(
         private id: number | null,
         private name: string,
-        private time: string,
         private user: number
     ) {}
 
@@ -13,10 +12,6 @@ export default class Workout
 
     public getName() {
         return this.name;
-    }
-
-    public getTime() {
-        return this.time;
     }
 
     public getUser() {

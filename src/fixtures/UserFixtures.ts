@@ -12,12 +12,12 @@ export default class UserFixtures extends Fixture
         private repository = new UserRepository()
     ) { super() }
 
-    public load() {
+    public async load() {
         const faker = this.getFaker();
 
         const users = faker.helpers.multiple(() => this.newUser(), { count: nbUser });
 
-        this.flush(this.repository, users);
+        await this.flush("User", this.repository, users);
     }
 
     private newUser(): User {

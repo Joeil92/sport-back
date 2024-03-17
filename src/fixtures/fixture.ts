@@ -12,9 +12,11 @@ export default class Fixture
         return this.faker;
     }
 
-    public flush(repository: Repository, datas: Data) {
-        for(const data of datas) {
-            repository.add(data as any);
-        }
+    public async flush(entity: string, repository: Repository, datas: Data) {
+        datas.forEach(async data => {
+            await repository.add(data as any)
+        });
+
+        console.log(`${entity} Fixture added...`);
     }
 }

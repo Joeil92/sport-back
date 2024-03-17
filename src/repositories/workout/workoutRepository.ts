@@ -15,7 +15,6 @@ export default class WorkoutRepository
         try {
             return await connect.query(sql, [
                 workout.getName(),
-                workout.getTime(),
                 workout.getUser()
             ]);
         } catch (error) {

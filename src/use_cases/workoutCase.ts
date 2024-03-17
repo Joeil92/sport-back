@@ -11,7 +11,6 @@ export default class WorkoutCase
     public async add(workout: WorkoutBody) {
         const isFieldsMissing = (
             !workout.name ||
-            !workout.time ||
             !workout.user_id
         );
 
@@ -20,7 +19,6 @@ export default class WorkoutCase
         const newWorkout = new Workout(
             null,
             workout.name,
-            workout.time,
             workout.user_id
         );
 
@@ -29,7 +27,6 @@ export default class WorkoutCase
                 return {
                     id: parseInt(workoutPacket.insertId),
                     name: newWorkout.getName(),
-                    time: newWorkout.getTime(),
                     user: newWorkout.getUser()
                 }
             });
