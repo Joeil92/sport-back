@@ -46,6 +46,34 @@ export default class UserRepository
         }
     }
 
+    public async updateSize(userId: string, size: string) {
+        const connect = await pool.getConnection();
+        const sql = this.queries.updateSize
+
+        try {
+            return await connect.query(sql, [size, userId]);
+        } catch (error) {
+            console.log(error);
+            throw new Error('error to querying table : User');
+        } finally {
+            await connect.end();
+        }
+    }
+
+    public async updateWeight(userId: string, weight: string) {
+        const connect = await pool.getConnection();
+        const sql = this.queries.updateWeight
+
+        try {
+            return await connect.query(sql, [weight, userId]);
+        } catch (error) {
+            console.log(error);
+            throw new Error('error to querying table : User');
+        } finally {
+            await connect.end();
+        }
+    }
+
     public async findByEmail(email: string): Promise<UserBody[]> {
         const connect = await pool.getConnection();
         const sql = this.queries.findByEmail;

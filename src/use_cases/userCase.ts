@@ -62,6 +62,28 @@ export default class UserCase {
             })
     }
 
+    public async updateSize(userId: string, size: string) {
+        if(!parseInt(size)) throw new Error('Please enter a valid format');
+
+        return await this.repository.findById(userId)
+            .then(async users => {
+                if(!users.length) throw new Error('User not found');
+
+                return await this.repository.updateSize(userId, size);
+            })
+    }
+
+    public async updateWeight(userId: string, weight: string) {
+        if(!parseInt(weight)) throw new Error('Please enter a valid format');
+
+        return await this.repository.findById(userId)
+            .then(async users => {
+                if(!users.length) throw new Error('User not found');
+
+                return await this.repository.updateWeight(userId, weight);
+            })
+    }
+
     public async findById(userId: string) {
         return await this.repository.findById(userId)
             .then(users => {

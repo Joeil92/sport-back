@@ -5,7 +5,7 @@ CREATE TABLE user (
     firstname VARCHAR(50) NOT NULL,
     lastname VARCHAR(50) NOT NULL,
     phone VARCHAR(15) NOT NULL,
-    weigth int(3),
+    weight int(3),
     size int(3),
     imageUrl LONGTEXT,
     roles JSON,

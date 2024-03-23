@@ -13,8 +13,11 @@ export default class UserQueries
         roles
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, JSON_ARRAY(?));`
 
-    public readonly updateAvatar = `
-    UPDATE user SET imageUrl = ? WHERE id = ?`;
+    public readonly updateAvatar = `UPDATE user SET imageUrl = ? WHERE id = ?`;
+
+    public readonly updateSize = `UPDATE user SET size = ? WHERE id = ?`;
+
+    public readonly updateWeight = `UPDATE user SET weight = ? WHERE id = ?`;
 
     public readonly findByEmail = `SELECT * FROM user WHERE email = ? LIMIT 1`;
 

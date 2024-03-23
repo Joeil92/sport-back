@@ -28,6 +28,24 @@ export default class UserController
             .catch(err => next(err));
     }
 
+    public updateSize = (req: Request, res: Response, next: NextFunction) => {
+        const userId = req.params.id;
+        const size = req.body.size;
+
+        return this.useCase.updateSize(userId, size)
+        .then(() => res.json('Size has been updated !'))
+        .catch(err => next(err));
+    }
+
+    public updateWeight = (req: Request, res: Response, next: NextFunction) => {
+        const userId = req.params.id;
+        const weight = req.body.weight;
+
+        return this.useCase.updateWeight(userId, weight)
+            .then(() => res.json('Weight has been updated !'))
+            .catch(err => next(err));
+    }
+
     public findById = (req: Request, res: Response, next: NextFunction) => {
         const userId = req.params.id;
 

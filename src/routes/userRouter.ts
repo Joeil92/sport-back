@@ -61,10 +61,19 @@ export default class UserRouter {
         /**
          * @swagger
          * /api/users/{id}/avatar:
-         *  post:
+         *  put:
          *      tags: 
          *          - User
          *      summary: Upload avatar's user
+         *      requestBody:
+         *          required: true
+         *          content:
+         *              multipart/form-data:
+         *                  schema:
+         *                      type: object
+         *                      properties:
+         *                          avatar:
+         *                              type: file
          *      parameters:
          *          - name: id
          *            in: path
@@ -75,7 +84,63 @@ export default class UserRouter {
          *          200:
          *              description: Upload avatar's user
         */
-        router.route('/:id/avatar').post([authMiddleware, upload.single('avatar')], controller.uploadAvatar);
+        router.route('/:id/avatar').put([authMiddleware, upload.single('avatar')], controller.uploadAvatar);
+
+        /**
+         * @swagger
+         * /api/users/{id}/size:
+         *  put:
+         *      tags:
+         *          - User
+         *      summary: Update user's size
+         *      requestBody:
+         *          required: true
+         *          content:
+         *              application/json:
+         *                  schema:
+         *                      type: object
+         *                      properties:
+         *                          size:
+         *                              type: number
+         *      parameters:
+         *          - name: id
+         *            in: path
+         *            required: true
+         *            schema:
+         *              type: string
+         *      responses:
+         *          200:
+         *              description: Update successfully user's size
+         */
+        router.route('/:id/size').put(authMiddleware, controller.updateSize);
+
+        /**
+         * @swagger
+         * /api/users/{id}/weight:
+         *  put:
+         *      tags:
+         *          - User
+         *      summary: Update user's weight
+         *      requestBody:
+         *          required: true
+         *          content:
+         *              application/json:
+         *                  schema:
+         *                      type: object
+         *                      properties:
+         *                          weight:
+         *                              type: number
+         *      parameters:
+         *          - name: id
+         *            in: path
+         *            required: true
+         *            schema:
+         *              type: string
+         *      responses:
+         *          200:
+         *              description: Update successfully user's weight
+         */
+        router.route('/:id/weight').put(authMiddleware, controller.updateWeight);
 
         /**
          * @swagger
@@ -108,6 +173,24 @@ export default class UserRouter {
          *          description: Retrieve list of users
         */
         router.route('/').get(authMiddleware, controller.findAll);
+
+        /**
+         * @swagger
+         * /api/users/avatars/{fileName}:
+         *  get:
+         *      tags:
+         *        - User
+         *      summary: Retrieve avatar's user
+         *      parameters:
+         *        - name: fileName
+         *          in: path
+         *          required: true
+         *          schema:
+         *              type: string
+         *      responses:
+         *           200:
+         *               description: Retrieve avatar's user
+        */
         router.route('/avatars/:fileName').get([authMiddleware], controller.avatar);
 
         return router;
