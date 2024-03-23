@@ -6,7 +6,7 @@ import FileService from "../services/fileService";
 export default class UserRouter {
     constructor(
         private controller = new UserController(),
-        private upload = new FileService('avatars')
+        private upload = new FileService('avatars', ['image/jpeg', 'image/png'])
     ) { }
 
     /**

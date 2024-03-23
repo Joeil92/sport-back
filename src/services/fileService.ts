@@ -1,12 +1,15 @@
 import multer, { StorageEngine, Multer, Options } from 'multer';
 import path from 'path';
 import fs from 'fs';
+import { Request } from 'express';
+import { FileType } from '../shared/types/fileType.interface';
 
 export default class FileService {
     private storage: StorageEngine
     private upload: Multer
+    private acceptedType: FileType[]
 
-    constructor(endpoint: string, limits?: Options["limits"]) {
+    constructor(endpoint: string, acceptedType: FileType[], limits?: Options["limits"]) {
         this.storage = multer.diskStorage({
             destination: function (req, file, cb) {
                 const destination = path.join(__dirname, '..', process.env.FILE_PATH + endpoint);
@@ -23,10 +26,24 @@ export default class FileService {
                 cb(null, file.fieldname + '-' + uniqueSuffix + '.' + format);
             }
         })
-        this.upload = multer({ storage: this.storage, limits: limits })
+        this.upload = multer({ storage: this.storage, limits: limits, fileFilter: this.fileFilter })
+        this.acceptedType = acceptedType;
     }
 
-    getUpload(): Multer {
+    public getUpload(): Multer {
         return this.upload;
+    }
+
+    private fileFilter = (req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+        console.log(this.acceptedType, file.mimetype);
+        try {
+            if(!this.acceptedType.includes(file.mimetype as FileType)) {
+                throw new Error('This format is not accepted. Please choose a valid one.')   
+            }
+            
+            cb(null, true);
+        } catch (error: any) {
+            cb(error);
+        }
     }
 }
