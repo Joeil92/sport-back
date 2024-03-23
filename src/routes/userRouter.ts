@@ -108,6 +108,7 @@ export default class UserRouter {
          *          description: Retrieve list of users
         */
         router.route('/').get(authMiddleware, controller.findAll);
+        router.route('/avatars/:fileName').get([authMiddleware], controller.avatar);
 
         return router;
     }

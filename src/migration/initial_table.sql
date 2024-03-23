@@ -7,7 +7,7 @@ CREATE TABLE user (
     phone VARCHAR(15) NOT NULL,
     weigth int(3),
     size int(3),
-    imageUrl varchar(255),
+    imageUrl LONGTEXT,
     roles JSON,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );

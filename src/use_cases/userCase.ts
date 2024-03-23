@@ -51,6 +51,17 @@ export default class UserCase {
             });
     }
 
+    public async updateAvatar(userId: string, avatar: Express.Multer.File | undefined) {
+        if(!avatar) throw new Error('No file found');
+
+        return await this.repository.findById(userId)
+            .then(async users => {
+                if(!users.length) throw new Error('User not found');
+
+                return await this.repository.updateAvatar(userId, avatar.filename);
+            })
+    }
+
     public async findById(userId: string) {
         return await this.repository.findById(userId)
             .then(users => {

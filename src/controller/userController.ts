@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import UserCase from "@FitTrackr/use_cases/userCase";
+import path from 'path';
 
 export default class UserController
 {
@@ -19,8 +20,12 @@ export default class UserController
     }
 
     public uploadAvatar = (req: Request, res: Response, next: NextFunction) => {
+        const userId = req.params.id;
         const avatar = req.file;
-        console.log(avatar);
+
+        return this.useCase.updateAvatar(userId, avatar)
+            .then(() => res.json('Avatar has been updated !'))
+            .catch(err => next(err));
     }
 
     public findById = (req: Request, res: Response, next: NextFunction) => {
@@ -35,5 +40,12 @@ export default class UserController
         return this.useCase.findAll()
             .then(users => res.json(users))
             .catch(err => next(err));
+    }
+
+    public avatar = (req: Request, res: Response, next: NextFunction) => {
+        const filePath = req.params.fileName;
+        const pathDestination = path.join(__dirname, '..', process.env.FILE_PATH + 'avatars/' + filePath);
+
+        return res.sendFile(pathDestination);
     }
 }

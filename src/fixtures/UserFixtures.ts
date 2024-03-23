@@ -29,6 +29,7 @@ export default class UserFixtures extends Fixture implements EntityFixture
         const faker = this.getFaker();
 
         const users = faker.helpers.multiple(() => this.newUser(), { count: nbUser });
+        users.unshift(this.newUser(true));
 
         return this.flush(users);
     }

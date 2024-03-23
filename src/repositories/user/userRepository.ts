@@ -32,6 +32,20 @@ export default class UserRepository
         }
     }
 
+    public async updateAvatar(userId: string, avatarName: string) {
+        const connect = await pool.getConnection();
+        const sql = this.queries.updateAvatar;
+
+        try {
+            return await connect.query(sql, [avatarName, userId]);
+        } catch (error) {
+            console.log(error);
+            throw new Error('error to querying table : User');
+        } finally {
+            await connect.end();
+        }
+    }
+
     public async findByEmail(email: string): Promise<UserBody[]> {
         const connect = await pool.getConnection();
         const sql = this.queries.findByEmail;
