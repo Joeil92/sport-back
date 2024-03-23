@@ -19,5 +19,4 @@ CREATE TABLE workout (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_workout_user 
         FOREIGN KEY (user_id) REFERENCES user (id) 
-        ON DELETE CASCADE
 );

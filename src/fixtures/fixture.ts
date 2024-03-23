@@ -1,6 +1,4 @@
 import { Faker, fr } from '@faker-js/faker';
-import { Repository } from './types/repository.type';
-import { Data } from './types/data.type';
 
 export default class Fixture
 {
@@ -8,15 +6,11 @@ export default class Fixture
         private faker = new Faker({ locale: [fr] })
     ) {}
 
-    public getFaker() {
-        return this.faker;
+    public endMessage(entity: string) {
+        console.log(entity + ' fixture has been added !');
     }
 
-    public async flush(entity: string, repository: Repository, datas: Data) {
-        datas.forEach(async data => {
-            await repository.add(data as any)
-        });
-
-        console.log(`${entity} Fixture added...`);
+    public getFaker() {
+        return this.faker;
     }
 }
