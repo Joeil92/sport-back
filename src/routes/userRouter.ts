@@ -1,10 +1,12 @@
 import express from "express";
 import UserController from "../controller/userController";
 import authMiddleware from "../middlewares/authMiddleware";
+import FileService from "../services/fileService";
 
 export default class UserRouter {
     constructor(
-        private controller = new UserController()
+        private controller = new UserController(),
+        private upload = new FileService('avatars')
     ) { }
 
     /**
@@ -16,6 +18,7 @@ export default class UserRouter {
     public routes() {
         const router = express.Router();
         const controller = this.controller;
+        const upload = this.upload.getUpload();
 
         /**
          * @swagger
@@ -57,6 +60,25 @@ export default class UserRouter {
 
         /**
          * @swagger
+         * /api/users/{id}/avatar:
+         *  post:
+         *      tags: 
+         *          - User
+         *      summary: Upload avatar's user
+         *      parameters:
+         *          - name: id
+         *            in: path
+         *            required: true
+         *            schema:
+         *              type: string
+         *      responses:
+         *          200:
+         *              description: Upload avatar's user
+        */
+        router.route('/:id/avatar').post([authMiddleware, upload.single('avatar')], controller.uploadAvatar);
+
+        /**
+         * @swagger
          * /api/users/{id}:
          *   get:
          *     tags:
@@ -72,7 +94,7 @@ export default class UserRouter {
          *      200:
          *          description: Retrieve user  
          */
-        router.route('/:id').get(controller.findById);
+        router.route('/:id').get(authMiddleware, controller.findById);
 
         /**
          * @swagger

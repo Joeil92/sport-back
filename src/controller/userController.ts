@@ -18,6 +18,11 @@ export default class UserController
             .catch(err => next(err));
     }
 
+    public uploadAvatar = async (req: Request, res: Response, next: NextFunction) => {
+        const avatar = req.file;
+        console.log(avatar);
+    }
+
     public findById = async (req: Request, res: Response, next: NextFunction) => {
         const userId = req.params.id;
 
